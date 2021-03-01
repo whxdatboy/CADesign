@@ -1,0 +1,5 @@
+открыть с помощью VS Code
+в терминале прописать $ npm i
+радоваться жизни
+
+npm install webp-converter@2.2.3 --save-dev
