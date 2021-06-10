@@ -1,0 +1,12 @@
+.header {
+  .menu {
+    &__list {
+      display: flex;
+      align-items: center;
+
+      li {
+        padding: 10px;
+      }
+    }
+  }
+}

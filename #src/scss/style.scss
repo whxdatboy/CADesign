@@ -3,15 +3,20 @@
 @import "fonts";
 @import "vendor";
 @import "settings";
+@import "vars";
 
-@media (max-width: 1024px) {
-  @import "../scss/parts/tablet";
+@media (min-width: 1024px) {
+  @import "../scss/adaptive/desktop";
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  @import "../scss/parts/mobile";
+  @import "../scss/adaptive/tablet";
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
-  @import "../scss/parts/mobile_xs";
+  @import "../scss/adaptive/mobile";
+}
+
+@media (min-width: 320px) and (max-width: 1023px) {
+  @import "../scss/vendor/burger";
 }
