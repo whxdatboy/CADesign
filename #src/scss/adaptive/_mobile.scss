@@ -4,6 +4,7 @@
   top: 0;
   z-index: 10;
   width: 100%;
+  background-color: var(--color-white);
 
   &__container {
     display: flex;
@@ -21,11 +22,11 @@
   }
 
   .menu {
-    z-index: 5;
     opacity: 0;
     transition: opacity 0.5s ease;
 
     &__body {
+      z-index: 5;
       background-color: var(--color-black);
     }
 
@@ -102,8 +103,29 @@
   }
 }
 
+.btn-orange {
+  padding: 20px 30px;
+  max-width: 223px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.15em;
+  text-align: center;
+  color: var(--color-white);
+  background-color: var(--color-orange);
+}
+
 .main {
-  padding-top: 70px;
+  margin-top: 70px;
+  min-height: 50vh;
+  background: url("../../img/hero/hero-girls-mob.png") no-repeat;
+  background-position: center bottom;
+  background-color: var(--color-main-blue);
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
 
   &__title {
     margin-top: 25px;
@@ -112,5 +134,75 @@
     font-size: 22px;
     line-height: 1.18em;
     text-align: center;
+    color: var(--color-white);
+  }
+
+  &__btn {
+    margin: 148px auto 40px;
+  }
+}
+
+.swiper {
+  &-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &-pagination {
+    display: block;
+    margin-top: 50px;
+  }
+
+  &-pagination-bullet {
+    width: 6px;
+    height: 6px;
+  }
+
+  &-pagination-bullet-active {
+    background: var(--color-orange);
+  }
+
+  &-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0 12px;
+  }
+}
+
+.boss {
+  &__container {
+    padding: 10px 20px;
+  }
+
+  &__photo {
+    margin: 10px auto;
+    width: 190px;
+    height: 221px;
+    background: url("../../img/hero/finboss-mob.png") no-repeat;
+    background-position: center bottom;
+  }
+
+  &__name {
+    margin: 15px 0 5px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.4em;
+    text-align: center;
+    color: var(--color-dark);
+  }
+
+  &__sub-title {
+    font-size: 13px;
+    line-height: 2.15em;
+    text-align: center;
+    color: var(--color-subname);
+  }
+
+  &__desc {
+    margin-bottom: 55px;
+    padding: 2px 5px 0;
+    font-size: 13px;
+    line-height: 1.7em;
+    text-align: center;
+    color: var(--color-dark);
   }
 }
