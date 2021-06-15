@@ -17,7 +17,7 @@
         top: 2px;
         width: 28px;
         height: 2px;
-        background-color: var(--color-black);
+        background-color: #003264;
         transition: all 0.3s ease 0s;
       }
 
@@ -33,8 +33,8 @@
 
     &__body {
       position: fixed;
-      left: 0;
-      top: -1000px;
+      right: -340px;
+      top: 0;
       padding: 60px 40px 30px;
       width: 100%;
       height: 472px;
@@ -43,8 +43,8 @@
     }
   }
 
-  .menu .is-active {
-    z-index: 8;
+  .menu__body.is-active {
+    right: 0;
     opacity: 1;
   }
 }

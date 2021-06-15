@@ -15,18 +15,18 @@ let path = {
   },
   src: {
     html: [source_folder + "/*.html", "!" + source_folder + "/_*.html"],
-    css: source_folder + "/scss/style.scss",
+    css: source_folder + "/scss/*.scss",
     js: source_folder + "/js/script.js",
     img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp,JPG,PNG,SVG,GIF,ICO,WEBP}",
     fonts: source_folder + "/fonts/*.ttf",
-    media: source_folder + "/media/*.*",
+    media: source_folder + "/media/*.{mp4,ogg,webm}",
   },
   watch: {
     html: source_folder + "/**/*.html",
     css: source_folder + "/scss/**/*.scss",
     js: source_folder + "/js/**/*.js",
     img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp,JPG,PNG,SVG,GIF,ICO,WEBP}",
-    media: source_folder + "/media/*.*",
+    media: source_folder + "/media/*.{mp4, ogg, webm}",
   },
   clean: "./" + project_folder + "/"
 }
@@ -93,7 +93,7 @@ function css() {
       })
     )
     .pipe(dest(path.build.css))
-    .pipe(browsersync.stream())
+    .pipe(browsersync.stream());
 }
 
 function js() {
@@ -143,6 +143,28 @@ function fonts(params) {
 function media(params) {
   return src(path.src.media)
     .pipe(dest(path.build.media));
+}
+
+function svgSprites(params) {
+  return gulp.src([source_folder + '/iconsprite/*.svg'])
+    .pipe(imagemin([
+      imagemin.svgo({
+        plugins: [
+          { removeViewBox: true },
+          { cleanupIDs: false }
+        ]
+      })
+    ]))
+    .pipe(svgSprite({
+      mode: {
+        stack: {
+          sprite: "../icons/icons.svg", //sprite file name
+          //example: true
+        }
+      },
+    }
+    ))
+    .pipe(dest(path.build.img))
 }
 
 gulp.task('otf2ttf', function () {
@@ -239,7 +261,7 @@ function cb() {
 
 function watchFiles(params) {
   gulp.watch([path.watch.html], html);
-  gulp.watch([path.watch.css], css);
+  gulp.watch([path.watch.css], css).on('change', browsersync.reload);
   gulp.watch([path.watch.js], js);
   gulp.watch([path.watch.img], images);
 }
@@ -248,9 +270,11 @@ function clean(params) {
   return del(path.clean);
 }
 
+let dev = gulp.series(clean, gulp.parallel(js, css, html, images, fonts, media, svgSprites), fontsStyle)
 let build = gulp.series(clean, gulp.parallel(js, css, html, images, fonts, media), fontsStyle);
 let watch = gulp.parallel(build, watchFiles, browserSync);
 
+exports.svgSprites = svgSprites;
 exports.media = media;
 exports.fontsStyle = fontsStyle;
 exports.fonts = fonts;
@@ -258,6 +282,7 @@ exports.images = images;
 exports.js = js;
 exports.css = scss;
 exports.html = html;
+exports.dev = dev;
 exports.build = build;
 exports.watch = watch;
 exports.default = watch;
