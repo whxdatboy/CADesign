@@ -108,7 +108,7 @@
   max-width: 223px;
   font-weight: 700;
   font-size: 14px;
-  line-height: 1.15em;
+  line-height: 1.19em;
   text-align: center;
   color: var(--color-white);
   background-color: var(--color-orange);
@@ -314,7 +314,8 @@
 }
 
 .vacancies {
-  z-index: 10;
+  position: relative;
+  z-index: 13;
   background-color: var(--color-white);
 
   &__container {
@@ -334,7 +335,6 @@
 
   &__select-trigger {
     position: relative;
-    z-index: 10;
     display: flex;
     align-items: center;
     padding-left: 18px;
@@ -368,17 +368,16 @@
 
   &__select-options {
     position: absolute;
-    top: -10px;
-    z-index: 1;
+    left: -9999px;
+    top: 5px;
     display: flex;
     flex-direction: column;
     background-color: #f2f2f2;
     opacity: 0;
-    transition: top 0.5s, opacity 0.3s;
+    transition: top 0.3s, opacity 0.5s;
   }
 
   &__select-option {
-    z-index: 10;
     border-top: 1px solid var(--color-subname);
     padding: 10px 20px;
 
@@ -391,8 +390,8 @@
 }
 
 .select-open {
+  left: 0;
   top: 65px;
-  z-index: 11;
   opacity: 1;
 }
 
@@ -404,8 +403,29 @@
   }
 
   &__item {
+    position: relative;
     border-top: 1px solid #e0e0e0;
     padding: 30px 50px 32px 0;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      right: 26px;
+      width: 6px;
+      height: 2px;
+      background-color: var(--color-black);
+    }
+
+    &::before {
+      top: 50%;
+      transform: rotate(45deg) translate(-50%);
+    }
+
+    &::after {
+      top: 50%;
+      transform: rotate(-45deg) translate(-50%);
+    }
   }
 
   &__salary {
@@ -430,9 +450,120 @@
   }
 }
 
+.popup {
+  position: fixed;
+  left: -9999px;
+  top: -10px;
+  display: block;
+  overflow-y: scroll;
+  background-color: var(--color-white);
+  opacity: 0;
+  transition: top 0.3s, opacity 0.5s;
+
+  &__container {
+    padding: 20px;
+  }
+
+  &__close {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__close-btn {
+    position: relative;
+    right: 0;
+    width: 36px;
+    height: 36px;
+    background-color: var(--color-orange);
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 40%;
+      top: 50%;
+      width: 9px;
+      height: 1px;
+      background-color: var(--color-white);
+      transform: translate(-50%, -50%);
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.2em;
+  }
+
+  &__salary {
+    margin-top: 27px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.25em;
+  }
+
+  &__main {
+    margin-top: 29px;
+
+    &-title {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1.33em;
+      color: var(--color-dark);
+    }
+  }
+
+  &__list {
+    list-style-type: square;
+    padding: 0 0 15px 14px;
+
+    &-item {
+      padding: 0 9px 0 8px;
+      font-size: 12px;
+      line-height: 1.6em;
+      color: var(--color-dark);
+
+      &:not(:first-child) {
+        margin-top: 23px;
+      }
+    }
+
+    &-feature {
+      padding: 3px 2px;
+      background-color: rgba(233, 134, 42, 0.17);
+    }
+  }
+
+  &__desc {
+    font-size: 11px;
+    line-height: 2.2em;
+    color: var(--color-gray);
+  }
+
+  &__btn {
+    margin: 40px auto 0;
+    max-width: 270px;
+  }
+}
+
+.popup.popup__open {
+  left: 0;
+  top: 0;
+  opacity: 1;
+}
+
 .history {
-  margin: 0 0 20px;
+  margin: 0;
   padding: 40px 0 20px;
+  background-color: var(--color-white);
 
   &__title {
     font-weight: 400;
@@ -508,8 +639,9 @@
 }
 
 .footer {
-  padding-bottom: 30px;
+  padding: 20px 0 30px;
   color: var(--color-dark);
+  background-color: #f7f7f7;
 
   &__container {
     display: flex;
@@ -517,6 +649,14 @@
     align-items: center;
     margin: 0 auto;
     padding: 10px 0;
+    max-width: 280px;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
     max-width: 280px;
   }
 
@@ -587,9 +727,9 @@
   }
 
   &__adress {
-    margin-top: 59px;
+    margin-top: 50px;
     font-size: 11px;
-    line-height: 1.45em;
+    line-height: 1.35em;
     text-align: center;
     color: var(--color-subname);
   }

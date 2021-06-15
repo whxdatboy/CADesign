@@ -33,19 +33,19 @@
         <nav class="menu__body">
           <ul class="menu__list">
             <li class="menu__item">
-              <a href="" class="menu__link">О нас</a>
+              <a href="#boss" class="menu__link">О нас</a>
             </li>
             <li class="menu__item">
-              <a href="" class="menu__link">Наши ценности</a>
+              <a href="#values" class="menu__link">Наши ценности</a>
             </li>
             <li class="menu__item">
-              <a href="" class="menu__link">Вакансии</a>
+              <a href="#vacancies" class="menu__link">Вакансии</a>
             </li>
             <li class="menu__item">
-              <a href="" class="menu__link">Начало карьеры</a>
+              <a href="#history" class="menu__link">Начало карьеры</a>
             </li>
             <li class="menu__item">
-              <a href="" class="menu__link">Контакты</a>
+              <a href="#footer" class="menu__link">Контакты</a>
             </li>
             <li class="menu__item menu__item-social">
               Социальные сети
@@ -87,7 +87,7 @@
     </div>
   </main>
 
-  <section class="boss">
+  <section class="boss" id="boss">
     <div class="boss__container container">
       <div class="swiper-container boss__slider">
         <div class="swiper-wrapper">
@@ -138,7 +138,7 @@
     </div>
   </section>
 
-  <section class="values">
+  <section class="values" id="values">
     <div class="values__container container">
       <h2 class="title">Наши ценности</h2>
       <div class="swiper-container values__slider">
@@ -167,7 +167,7 @@
     </div>
   </section>
 
-  <section class="vacancies">
+  <section class="vacancies" id="vacancies">
     <div class="vacancies__container container">
       <h2 class="vacancies__title title">Вакансии</h2>
 
@@ -233,9 +233,93 @@
       <div class="vacancy__btn btn-orange">Больше вакансий</div>
 
     </section>
+
+    <div class="vacancy__popup popup">
+      <div class="popup__wrapper">
+        <div class="popup__container container">
+          <div class="popup__close">
+            <div class="popup__close-btn"></div>
+          </div>
+          <div class="popup__header">
+            <h3 class="popup__title">Бухгалтер по расчету заработной платы</h3>
+            <div class="popup__salary">от 30 000 до 60 000 руб. до вычета налогов</div>
+          </div>
+
+          <div class="popup__main">
+            <h4 class="popup__main-title">Обязанности</h4>
+
+            <ul class="popup__list">
+
+              <li class="popup__list-item">
+                Ведение бухгалтерского учета ООО и ИП "под ключ" (от обработки первичной документации до сдачи всей
+                отчетности)
+              </li>
+
+              <li class="popup__list-item">
+                Составление отчетности как регламентированной так и управленческой.
+              </li>
+
+              <li class="popup__list-item">
+                Постановку учета с нуля, восстановление учета.
+              </li>
+
+              <li class="popup__list-item">
+                Консультирование в выборе формы налогооблажения,оптимизация налогооблажения.
+              </li>
+
+              <li class="popup__list-item">
+                Подготовку и сдачу отчетности в ИФНС и фонды.
+              </li>
+
+              <li class="popup__list-item">
+                Ввод первичной документации в 1с:реализация,поступление,банк,касса.
+              </li>
+
+              <li class="popup__list-item">
+                Работу с клиент-банк(проведение платежей)
+              </li>
+
+            </ul>
+
+            <h4 class="popup__main-title">Требования</h4>
+            <ul class="popup__list">
+              <li class="popup__list-item">
+                Опыт работы бухгалтером
+              </li>
+
+              <li class="popup__list-item">
+                Уверенный пользователь ПК
+              </li>
+
+              <li class="popup__list-item">
+                Личные качества <br>(аккуратность,внимательность,нацеленость на результат)
+              </li>
+
+            </ul>
+
+            <h4 class="popup__main-title">Условия</h4>
+            <ul class="popup__list">
+              <li class="popup__list-item">
+                <span class="popup__list-feature">З/плата от 30 000</span>
+              </li>
+
+              <li class="popup__list-item">
+                От 30 000 до 60 000 руб. до вычета налогов
+              </li>
+
+            </ul>
+          </div>
+
+          <span class="popup__desc">Вакансия добавлена 16 февраля 2020</span>
+
+          <div class="btn-orange popup__btn">Откликнуться</div>
+        </div>
+      </div>
+    </div>
+
   </section>
 
-  <section class="history">
+  <section class="history" id="history">
     <div class="container history__container">
       <h2 class="history__title title">Истории успеха</h2>
 
@@ -277,7 +361,7 @@
     </div>
   </section>
 
-  <footer class="footer">
+  <footer class="footer" id="footer">
     <div class="container footer__container">
 
       <h4 class="footer__title">Отдел подбора персонала:</h4>
@@ -324,6 +408,9 @@
 
       </div>
 
+    </div>
+
+    <div class="footer__block">
       <p class="footer__adress">© 1998–2019,«Компания», 53002, Иваново, Лежневская 34 корпус 1</p>
 
       <a href="" class="links footer__politics">Политика обработки персональных данных</a>
@@ -334,6 +421,8 @@
         </svg>
       </a>
     </div>
+
+
   </footer>
 
   <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
