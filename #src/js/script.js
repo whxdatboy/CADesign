@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+  const bodyWrap = document.querySelector('.body__wrapper');
+
   // burger menu
   const btnMenu = document.querySelector('.menu__icon'),
     menuLinks = document.querySelectorAll('.menu__link'),
@@ -24,14 +26,43 @@ document.addEventListener("DOMContentLoaded", function () {
   })
 
   // sliders
+  const plusSlider = new Swiper('.plus__slider', {
+
+    loop: true,
+    loopFillGroupWithBlank: true,
+
+    pagination: {
+      el: '.swiper-pagination',
+    },
+
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+        slidesPerGroup: 2
+      }
+    }
+  })
+
   const bossSwiper = new Swiper('.boss__slider', {
 
     direction: 'horizontal',
     loop: true,
 
-    pagination: {
-      el: '.swiper-pagination',
-    },
+
+
+    breakpoints: {
+      320: {
+        pagination: {
+          el: '.swiper-pagination',
+        },
+      },
+      768: {
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      }
+    }
 
   });
 
@@ -39,9 +70,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     loop: true,
 
-    pagination: {
-      el: '.swiper-pagination',
-    },
+    breakpoints: {
+      320: {
+        pagination: {
+          el: '.swiper-pagination',
+        },
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 40,
+      }
+    }
+
+
 
   });
 
@@ -79,13 +120,14 @@ document.addEventListener("DOMContentLoaded", function () {
   vacancy.forEach(vac => {
     vac.addEventListener('click', function () {
       popupVacancy.classList.add('popup__open');
-      document.body.style.overflow = "hidden";
+      bodyWrap.style.overflow = "hidden";
+      popupVacancy.style.overflow = "scroll";
     })
   })
 
   vacancyCloseBtn.addEventListener('click', function () {
     popupVacancy.classList.remove('popup__open');
-    document.body.style.overflow = "auto";
+    bodyWrap.style.overflow = "auto";
   })
 
   // customs select-option
@@ -99,8 +141,6 @@ document.addEventListener("DOMContentLoaded", function () {
     options.classList.toggle('select-open');
   })
 
-
-
   option.forEach((opt, i) => {
     opt.addEventListener('click', function () {
       let text = this.innerText,
@@ -110,6 +150,39 @@ document.addEventListener("DOMContentLoaded", function () {
       currentText.innerText = text;
       options.classList.remove('select-open');
     })
+  })
+
+  //pluses block
+
+  const plusBlock = document.querySelectorAll('.plus__slide'),
+    plusContainer = document.querySelector('.plus__wrapper');
+
+  plusContainer.addEventListener('click', function (e) {
+    const target = e.target;
+    plusBlock.forEach(block => {
+      block.classList.remove('plus-active');
+    })
+    target.classList.add('plus-active');
+  })
+
+  //services block
+
+  const servicesItem = document.querySelectorAll('.boss__services-item'),
+        servicesContainer = document.querySelector('.boss__services');
+
+  servicesContainer.addEventListener('click', function(e) {
+    const target = e.target;
+    servicesItem.forEach(block => {
+      block.classList.remove('service-active');
+    })
+    target.classList.add('service-active');
+  })
+
+  //custom radio button
+
+  const radioBtn = document.querySelector('.vacancies__radio-button');
+  radioBtn.addEventListener('click', function() {
+    radioBtn.classList.toggle('radio-active');
   })
 
 });

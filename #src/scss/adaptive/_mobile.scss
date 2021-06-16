@@ -33,6 +33,7 @@
     &__list {
       display: flex;
       flex-direction: column;
+      max-width: 280px;
     }
 
     &__item {
@@ -103,8 +104,16 @@
   }
 }
 
+.plus__slider,
+.boss__service {
+  display: none;
+}
+
 .btn-orange {
-  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
   max-width: 223px;
   font-weight: 700;
   font-size: 14px;
@@ -116,7 +125,6 @@
 }
 
 .main {
-  margin-top: 70px;
   min-height: 50vh;
   background: url("../../img/hero/hero-girls-mob.png") no-repeat;
   background-position: center bottom;
@@ -170,6 +178,8 @@
 }
 
 .boss {
+  background-color: var(--color-white);
+
   &__container {
     padding: 10px 20px;
   }
@@ -315,8 +325,12 @@
 
 .vacancies {
   position: relative;
-  z-index: 13;
+  z-index: 5;
   background-color: var(--color-white);
+
+  &__radio-container {
+    display: none;
+  }
 
   &__container {
     padding: 31px 20px 23px;
@@ -392,6 +406,7 @@
 .select-open {
   left: 0;
   top: 65px;
+  z-index: 5;
   opacity: 1;
 }
 
@@ -400,6 +415,10 @@
     overflow: hidden;
     height: 412px;
     transition: height 1s;
+  }
+
+  &__img {
+    display: none;
   }
 
   &__item {
@@ -411,7 +430,7 @@
     &::after {
       content: "";
       position: absolute;
-      right: 26px;
+      right: 7.5%;
       width: 6px;
       height: 2px;
       background-color: var(--color-black);
@@ -451,9 +470,10 @@
 }
 
 .popup {
-  position: fixed;
+  position: absolute;
   left: -9999px;
   top: -10px;
+  z-index: 40;
   display: block;
   overflow-y: scroll;
   background-color: var(--color-white);
@@ -557,6 +577,8 @@
 .popup.popup__open {
   left: 0;
   top: 0;
+  z-index: 20;
+  overflow-y: scroll;
   opacity: 1;
 }
 
