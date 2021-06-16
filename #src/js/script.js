@@ -2,6 +2,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const bodyWrap = document.querySelector('.body__wrapper');
 
+  //social links 
+  const linkSocial = document.querySelector('.menu__item-social'),
+    linksSocialContainer = document.querySelector('.menu__sub-item');
+  linkSocial.addEventListener('click', function () {
+    if (!linksSocialContainer.classList.contains('social-links-active')) {
+      linksSocialContainer.style.display = "flex";
+    } else {
+      linksSocialContainer.style.display = "none";
+    }
+
+    linksSocialContainer.classList.toggle('social-links-active');
+  })
+
   // burger menu
   const btnMenu = document.querySelector('.menu__icon'),
     menuLinks = document.querySelectorAll('.menu__link'),
@@ -39,7 +52,11 @@ document.addEventListener("DOMContentLoaded", function () {
       768: {
         slidesPerView: 2,
         slidesPerGroup: 2
+      },
+      1440: {
+        // watchOverflow: plusSlider,
       }
+
     }
   })
 
@@ -47,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     direction: 'horizontal',
     loop: true,
+    init: true,
 
 
 
@@ -168,9 +186,9 @@ document.addEventListener("DOMContentLoaded", function () {
   //services block
 
   const servicesItem = document.querySelectorAll('.boss__services-item'),
-        servicesContainer = document.querySelector('.boss__services');
+    servicesContainer = document.querySelector('.boss__services');
 
-  servicesContainer.addEventListener('click', function(e) {
+  servicesContainer.addEventListener('click', function (e) {
     const target = e.target;
     servicesItem.forEach(block => {
       block.classList.remove('service-active');
@@ -181,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //custom radio button
 
   const radioBtn = document.querySelector('.vacancies__radio-button');
-  radioBtn.addEventListener('click', function() {
+  radioBtn.addEventListener('click', function () {
     radioBtn.classList.toggle('radio-active');
   })
 
