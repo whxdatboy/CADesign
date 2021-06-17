@@ -5,16 +5,20 @@
 @import "settings";
 @import "vars";
 
-@media (min-width: 1440px) {
-  @import "../scss/adaptive/desktop";
+@media (min-width: 320px) {
+  @import "../scss/adaptive/mobile";
 }
 
 @media (min-width: 768px) {
   @import "../scss/adaptive/tablet";
 }
 
-@media (min-width: 320px) {
-  @import "../scss/adaptive/mobile";
+@media (min-width: 768px) and (max-width: 1439px) {
+  @import "../scss/adaptive/tablet-add";
+}
+
+@media (min-width: 1440px) {
+  @import "../scss/adaptive/desktop";
 }
 
 @media (min-width: 320px) and (max-width: 1439px) {

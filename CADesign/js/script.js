@@ -43,35 +43,35 @@ document.addEventListener("DOMContentLoaded", function () {
   let init = false;
 
   function swiperMode() {
-        let mobile = window.matchMedia('(min-width: 250px) and (max-width: 767px)'),
-            tablet = window.matchMedia('(min-width: 768px) and (max-width: 1439px)'),
-            desktop = window.matchMedia('(min-width: 1440px)');
+    let mobile = window.matchMedia('(min-width: 250px) and (max-width: 767px)'),
+      tablet = window.matchMedia('(min-width: 768px) and (max-width: 1439px)'),
+      desktop = window.matchMedia('(min-width: 1440px)');
 
-            if (mobile.matches && tablet.matches) {
-              if (!init) {
-                init = true;
-                const plusSlider = new Swiper('.plus__slider', {
+    if (mobile.matches && tablet.matches) {
+      if (!init) {
+        init = true;
+        const plusSlider = new Swiper('.plus__slider', {
 
-                  loop: true,
-                  loopFillGroupWithBlank: true,
+          loop: true,
+          loopFillGroupWithBlank: true,
 
-                  pagination: {
-                    el: '.swiper-pagination',
-                  },
+          pagination: {
+            el: '.swiper-pagination',
+          },
 
-                  breakpoints: {
-                    768: {
-                      slidesPerView: 2,
-                      slidesPerGroup: 2
-                    },
+          breakpoints: {
+            768: {
+              slidesPerView: 2,
+              slidesPerGroup: 2
+            },
 
-                  }
-                })
-              } else if (desktop.matches) {
-                plusSlider.destroy();
-                init = false;
-              }
-            }
+          }
+        })
+      } else if (desktop.matches) {
+        plusSlider.destroy();
+        init = false;
+      }
+    }
   }
 
   swiperMode();
@@ -233,6 +233,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-window.addEventListener('resize', function() {
+window.addEventListener('resize', function () {
   swiperMode();
 });

@@ -11,9 +11,7 @@
 }
 
 .main {
-  background:
-    url("../../img/hero/hero-girls.png") no-repeat,
-    url("../../img/hero/hero-bg2-tablet.png") no-repeat,
+  background: url("../../img/hero/hero-girls.png") no-repeat, url("../../img/hero/hero-bg2-tablet.png") no-repeat,
     url("../../img/hero/hero-bg-tablet.png") no-repeat;
   background-position-x: 140%, -5%, 103%;
   background-position-y: 100%, 100%, 190%;
@@ -358,19 +356,21 @@
       align-items: center;
       justify-content: center;
     }
-
-    &:nth-child(odd) {
-      margin-right: 30px;
-    }
   }
 
   &-open {
-    height: 1025px;
+    height: auto;
   }
 }
 
 .students {
   display: none;
+}
+
+.history {
+  &__quote {
+    display: none;
+  }
 }
 
 .is-hidden {

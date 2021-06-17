@@ -1,0 +1,5 @@
+.vacansy-item {
+  &:nth-child(odd) {
+    margin-right: 30px;
+  }
+}

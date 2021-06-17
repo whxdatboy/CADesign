@@ -603,6 +603,10 @@
     color: var(--color-dark);
   }
 
+  &__quote {
+    display: none;
+  }
+
   &__slider {
     margin-top: 40px;
   }
