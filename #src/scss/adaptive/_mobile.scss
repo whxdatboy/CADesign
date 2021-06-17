@@ -114,6 +114,7 @@
   flex-direction: column;
   justify-content: center;
   width: 100%;
+  height: 56px;
   max-width: 223px;
   font-weight: 700;
   font-size: 14px;
@@ -155,7 +156,6 @@
   &-slide {
     display: flex;
     flex-direction: column;
-    align-items: center;
   }
 
   &-pagination {
@@ -179,6 +179,11 @@
 
 .boss {
   background-color: var(--color-white);
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
 
   &__container {
     padding: 10px 20px;
@@ -467,6 +472,10 @@
   &-open {
     height: 100%;
   }
+}
+
+.students {
+  display: none;
 }
 
 .popup {

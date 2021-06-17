@@ -144,7 +144,9 @@
 
   .swiper-button-next,
   .swiper-button-prev {
+    position: absolute;
     top: 35%;
+    display: flex;
     border: 1px solid #e0e0e0;
   }
 
@@ -310,6 +312,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 36px;
+    border-radius: 3px;
     width: 45px;
     height: 45px;
     background-color: var(--color-main-blue);
@@ -364,6 +367,10 @@
   &-open {
     height: 1025px;
   }
+}
+
+.students {
+  display: none;
 }
 
 .is-hidden {

@@ -2,9 +2,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const bodyWrap = document.querySelector('.body__wrapper');
 
-  //social links 
+  //social links
   const linkSocial = document.querySelector('.menu__item-social'),
     linksSocialContainer = document.querySelector('.menu__sub-item');
+
   linkSocial.addEventListener('click', function () {
     if (!linksSocialContainer.classList.contains('social-links-active')) {
       linksSocialContainer.style.display = "flex";
@@ -39,26 +40,41 @@ document.addEventListener("DOMContentLoaded", function () {
   })
 
   // sliders
-  const plusSlider = new Swiper('.plus__slider', {
+  let init = false;
 
-    loop: true,
-    loopFillGroupWithBlank: true,
+  function swiperMode() {
+        let mobile = window.matchMedia('(min-width: 250px) and (max-width: 767px)'),
+            tablet = window.matchMedia('(min-width: 768px) and (max-width: 1439px)'),
+            desktop = window.matchMedia('(min-width: 1440px)');
 
-    pagination: {
-      el: '.swiper-pagination',
-    },
+            if (mobile.matches && tablet.matches) {
+              if (!init) {
+                init = true;
+                const plusSlider = new Swiper('.plus__slider', {
 
-    breakpoints: {
-      768: {
-        slidesPerView: 2,
-        slidesPerGroup: 2
-      },
-      1440: {
-        // watchOverflow: plusSlider,
-      }
+                  loop: true,
+                  loopFillGroupWithBlank: true,
 
-    }
-  })
+                  pagination: {
+                    el: '.swiper-pagination',
+                  },
+
+                  breakpoints: {
+                    768: {
+                      slidesPerView: 2,
+                      slidesPerGroup: 2
+                    },
+
+                  }
+                })
+              } else if (desktop.matches) {
+                plusSlider.destroy();
+                init = false;
+              }
+            }
+  }
+
+  swiperMode();
 
   const bossSwiper = new Swiper('.boss__slider', {
 
@@ -79,6 +95,12 @@ document.addEventListener("DOMContentLoaded", function () {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
         },
+
+        1440: {
+          spaceBetween: 60,
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        }
       }
     }
 
@@ -97,6 +119,12 @@ document.addEventListener("DOMContentLoaded", function () {
       768: {
         slidesPerView: 2,
         spaceBetween: 40,
+      },
+      1440: {
+        loop: false,
+        slidesPerView: 3,
+        spaceBetween: 32,
+        enabled: false,
       }
     }
 
@@ -203,4 +231,8 @@ document.addEventListener("DOMContentLoaded", function () {
     radioBtn.classList.toggle('radio-active');
   })
 
+});
+
+window.addEventListener('resize', function() {
+  swiperMode();
 });
