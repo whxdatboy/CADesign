@@ -752,10 +752,18 @@ svg path {
     width: 100%;
   }
 
-  .video__section {
-    position: relative;
+  .video__yt {
     width: 100%;
-    height: 207px;
+    height: 530px;
+    max-width: 920px;
+  }
+
+  .video__poster {
+    width: 100%;
+    height: 208px;
+    background: url("../../img/cover.png") no-repeat;
+    background-position: 49% 80%;
+    background-size: 201%;
   }
 
   .video__play {
@@ -800,10 +808,30 @@ svg path {
             transform: translate(-50%, -55%);
   }
 
+  .video__popup {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+
+  .video__popup.video-open {
+    left: 0;
+    top: 0;
+    z-index: 20;
+    height: 100%;
+    opacity: 1;
+  }
+
   .title {
     margin: 5px 0;
     font-weight: 400;
-    font-size: 21px;
+    font-size: 22px;
     line-height: 1.25em;
     text-align: center;
   }
@@ -826,6 +854,10 @@ svg path {
   .values {
     margin-top: 15px;
     background-color: var(--color-grey);
+  }
+
+  .values .title {
+    margin: 22px 0 5px;
   }
 
   .values__wrapper {
@@ -1029,21 +1061,32 @@ svg path {
   }
 
   .popup {
-    position: absolute;
+    position: fixed;
     left: -9999px;
     top: -10px;
     z-index: 40;
-    display: block;
     overflow-y: scroll;
-    background-color: var(--color-white);
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
     opacity: 0;
     -webkit-transition: top 0.3s, opacity 0.5s;
     -o-transition: top 0.3s, opacity 0.5s;
     transition: top 0.3s, opacity 0.5s;
   }
 
+  .popup__wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
   .popup__container {
     padding: 20px;
+    background-color: var(--color-white);
   }
 
   .popup__close {
@@ -1608,6 +1651,32 @@ svg path {
     height: 440px;
   }
 
+  .video__poster {
+    height: 438px;
+    background-position: 43% 33%;
+    background-size: 173%;
+  }
+
+  .video__play-btn {
+    width: 100px;
+    height: 100px;
+  }
+
+  .video__play-btn::after {
+    left: 57%;
+    border: 10px solid transparent;
+    border-left: 16px solid var(--color-white);
+  }
+
+  .video__play-btn:hover__play-btn {
+    opacity: 0.7;
+  }
+
+  .video__yt {
+    width: 560px;
+    height: 315px;
+  }
+
   .values__item {
     height: 413px;
     max-width: 376px;
@@ -1781,6 +1850,10 @@ svg path {
     display: none;
   }
 
+  .history__content::after {
+    width: 645px;
+  }
+
   .is-hidden {
     display: none;
   }
@@ -1798,12 +1871,13 @@ svg path {
 
 @media (min-width: 1440px) {
   .container {
-    max-width: 1222px;
+    max-width: 1240px;
   }
 
   .body__wrapper {
     z-index: 9;
     padding: 0;
+    height: 100%;
     background-color: var(--color-white);
   }
 
@@ -1856,12 +1930,16 @@ svg path {
   .header .menu__item:not(:last-child)::after {
     content: "";
     position: absolute;
-    left: 0;
+    left: 50%;
+    right: 50%;
     bottom: 0;
-    width: 100%;
+    width: 114%;
     height: 2px;
     background-color: var(--color-orange);
     opacity: 0;
+    -webkit-transform: translate(-50%, 0);
+        -ms-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
     -webkit-transition: opacity 0.3s;
     -o-transition: opacity 0.3s;
     transition: opacity 0.3s;
@@ -1888,7 +1966,7 @@ svg path {
             justify-content: center;
     margin-top: 11px;
     margin-right: 11px;
-    width: 868px;
+    width: 885px;
     background-color: transparent;
   }
 
@@ -1980,25 +2058,25 @@ svg path {
     transition: fill 0.3s;
   }
 
-  .header .icon__logo {
-    margin-top: 9px;
-    margin-left: 38px;
+  .header__logo {
+    margin: 0;
+    padding: 10px 0 0 38px;
   }
 
   .main {
     overflow: hidden;
     margin-top: 36px;
-    min-height: 448px;
+    min-height: 447px;
     background: url("../../img/hero/hero-girls.png") no-repeat, url("../../img/hero/hero-bg2.png") no-repeat, url("../../img/hero/hero-bg.jpg") no-repeat;
-    background-position-x: 79%, 15%, 90%;
-    background-position-y: 100%, 35%, 81%;
-    background-size: 36%, contain, 56%;
+    background-position-x: 78%, 15%, 88%;
+    background-position-y: 145%, 35%, 81%;
+    background-size: 36%, contain, 55%;
   }
 
   .main__container {
-    padding: 95px 0;
+    padding: 95px 1px;
     height: 100%;
-    max-width: 1150px;
+    max-width: 1170px;
   }
 
   .main__title {
@@ -2015,9 +2093,14 @@ svg path {
   .plus__wrapper {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -webkit-box-pack: normal;
+        -ms-flex-pack: normal;
+            justify-content: normal;
+    margin-left: 32px;
+  }
+
+  .plus__desc {
+    top: 0;
   }
 
   .plus__slide {
@@ -2025,10 +2108,15 @@ svg path {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    overflow: hidden;
     border: 1px solid #ededed;
+    padding-bottom: 60px;
     width: 100%;
-    height: 377px;
-    max-width: 399px;
+    max-width: 395px;
+    max-height: 310px;
     -webkit-transition: -webkit-box-shadow 0.3s;
     transition: -webkit-box-shadow 0.3s;
     -o-transition: box-shadow 0.3s;
@@ -2047,10 +2135,24 @@ svg path {
   }
 
   .plus__slide:hover .plus__desc {
+    top: 205px;
     opacity: 1;
   }
 
+  .plus__slide:first-child .plus__icon {
+    width: 67%;
+  }
+
+  .plus__slide:nth-child(2) .plus__icon {
+    width: 75%;
+  }
+
+  .plus__slide:nth-child(n+3) {
+    margin-top: 1px;
+  }
+
   .plus__slide:nth-child(4) .plus__icon {
+    width: 95%;
     fill: transparent;
     stroke: #4f4f4f;
     stroke-width: 3;
@@ -2069,11 +2171,18 @@ svg path {
   }
 
   .plus__img {
+    margin-top: 60px;
+    max-width: 100px;
+    max-height: 100px;
     text-align: center;
   }
 
   .plus__icon {
-    width: 80%;
+    height: 100%;
+  }
+
+  .plus__title {
+    margin-top: 20px;
   }
 
   .boss .swiper-button-next,
@@ -2409,7 +2518,7 @@ svg path {
 }
 
 @media (min-width: 768px) and (max-width: 1439px) {
-  .vacansy-item:nth-child(odd) {
+  .vacancy__item:nth-child(odd) {
     margin-right: 30px;
   }
 }

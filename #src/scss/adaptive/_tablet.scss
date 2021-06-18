@@ -218,6 +218,34 @@
   &__section {
     height: 440px;
   }
+
+  &__poster {
+    height: 438px;
+    background-position: 43% 33%;
+    background-size: 173%;
+  }
+
+  &__play-btn {
+    width: 100px;
+    height: 100px;
+
+    &::after {
+      left: 57%;
+      border: 10px solid transparent;
+      border-left: 16px solid var(--color-white);
+    }
+
+    &:hover {
+      &__play-btn {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  &__yt {
+    width: 560px;
+    height: 315px;
+  }
 }
 
 .values {
@@ -370,6 +398,12 @@
 .history {
   &__quote {
     display: none;
+  }
+
+  &__content {
+    &::after {
+      width: 645px;
+    }
   }
 }
 

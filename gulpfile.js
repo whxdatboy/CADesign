@@ -1,3 +1,4 @@
+'use strict';
 
 let project_folder = require("path").basename(__dirname);
 let source_folder = "#src";
@@ -11,7 +12,6 @@ let path = {
     js: project_folder + "/js/",
     img: project_folder + "/img/",
     fonts: project_folder + "/fonts/",
-    media: source_folder + "/media/",
   },
   src: {
     html: [source_folder + "/*.html", "!" + source_folder + "/_*.html"],
@@ -19,14 +19,12 @@ let path = {
     js: source_folder + "/js/script.js",
     img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp,JPG,PNG,SVG,GIF,ICO,WEBP}",
     fonts: source_folder + "/fonts/*.ttf",
-    media: source_folder + "/media/*.{mp4,ogg,webm}",
   },
   watch: {
     html: source_folder + "/**/*.html",
     css: source_folder + "/scss/**/*.scss",
     js: source_folder + "/js/**/*.js",
     img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp,JPG,PNG,SVG,GIF,ICO,WEBP}",
-    media: source_folder + "/media/*.{mp4, ogg, webm}",
   },
   clean: "./" + project_folder + "/"
 }
@@ -138,11 +136,6 @@ function fonts(params) {
   return src(path.src.fonts)
     .pipe(ttf2woff2())
     .pipe(dest(path.build.fonts));
-}
-
-function media(params) {
-  return src(path.src.media)
-    .pipe(dest(path.build.media));
 }
 
 function svgSprites(params) {
@@ -270,12 +263,11 @@ function clean(params) {
   return del(path.clean);
 }
 
-let dev = gulp.series(clean, gulp.parallel(js, css, html, images, fonts, media, svgSprites), fontsStyle)
-let build = gulp.series(clean, gulp.parallel(js, css, html, images, fonts, media), fontsStyle);
+let dev = gulp.series(clean, gulp.parallel(js, css, html, images, fonts, svgSprites), fontsStyle)
+let build = gulp.series(clean, gulp.parallel(js, css, html, images, fonts), fontsStyle);
 let watch = gulp.parallel(build, watchFiles, browserSync);
 
 exports.svgSprites = svgSprites;
-exports.media = media;
 exports.fontsStyle = fontsStyle;
 exports.fonts = fonts;
 exports.images = images;

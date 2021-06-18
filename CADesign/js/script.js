@@ -142,10 +142,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // video play
   const btnPlay = document.querySelector('.video__play-btn'),
-    video = document.querySelector('.video__section');
+    videoPopup = document.querySelector('.video__popup'),
+    videoBox = document.querySelector('.bideo__yt');
   btnPlay.addEventListener('click', function () {
-    video.play();
+    videoPopup.classList.add("video-open");
   });
+
+  videoPopup.addEventListener('click', function(e) {
+    let target = e.target;
+
+    if(target != videoBox && videoPopup.classList.contains("video-open")) {
+      videoPopup.classList.remove("video-open");
+    }
+  })
 
 
   //open all vacancies
